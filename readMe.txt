@@ -1,3 +1,6 @@
+
+![Website Demo](ExampleFif.gif)
+
 Commands needed for the program.
 
 node server.js  --executes the program
