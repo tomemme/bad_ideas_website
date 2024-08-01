@@ -1,5 +1,5 @@
 
-![Website Demo](ExampleGif.gif)
+![GUI](ExampleGif.gif)
 
 Commands needed for the program.
 
