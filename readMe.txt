@@ -1,5 +1,5 @@
 
-![GUI](ExampleGif.gif)
+![GUI](https://github.com/tomemme/bad_ideas_website/blob/main/ExampleGif.gif)
 
 Commands needed for the program.
 
