@@ -161,33 +161,36 @@
       fetch('/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: idea })
-      }).then(response => response.text())
-        .then(data => {
+        body: JSON.stringify({ content: idea }),
+      })
+        .then((response) => response.text())
+        .then((data) => {
           document.getElementById('idea').value = '';
           loadLatestMessage();
-        });
+        })
+        .catch((error) => console.error('Error submitting idea:', error));
     }
 
     function loadLatestMessage() {
       fetch('/latest-message')
-        .then(response => response.json())
-        .then(data => {
-          const messagesDiv = document.getElementById('messages');
-          const p = document.createElement('p');
-          p.textContent = data.content;
-          p.classList.add('message');
-          messagesDiv.appendChild(p);
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.content) {
+            const messagesDiv = document.getElementById('messages');
+            const p = document.createElement('p');
+            p.textContent = data.content;
+            p.classList.add('message');
+            messagesDiv.appendChild(p);
 
-          // Remove the message element after the animation ends
-          setTimeout(() => {
-            messagesDiv.removeChild(p);
-          }, 10000); // Match the duration of the animation
-        });
+            setTimeout(() => {
+              messagesDiv.removeChild(p);
+            }, 10000); // Match the duration of the animation
+          }
+        })
+        .catch((error) => console.error('Error loading message:', error));
     }
 
-    // Initial load and periodic refresh
-    setInterval(loadLatestMessage, 2000); // Adjust the interval as needed
+    setInterval(loadLatestMessage, 2000);
   </script>
 </body>
 </html>
